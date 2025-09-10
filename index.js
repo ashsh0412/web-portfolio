@@ -1,11 +1,21 @@
 const projects = [
   {
+    title: "TripCal",
+    description:
+      "Developed a cross-platform travel budget calculator app using React Native and TypeScript. Integrated public APIs to provide cost of living data, currency conversion, and official travel advisories. Implemented features for personalized budget planning, city cost comparison, and embassy information, while managing the full development lifecycle from UI design to deployment.",
+    color: "linear-gradient(to right, #facc15, #ef4444)",
+    tags: ["React Native", "TypeScript", "Expo", "App Store Deployment"],
+    year: "Sep 2025 - Present",
+    link: "https://apps.apple.com/kr/app/tripcal/id6751708982",
+  },
+  {
     title: "DriverMatch",
     description:
-      "Developed a full-stack carpool matching platform that optimizes routes using Google Maps API. Managing entire development lifecycle including frontend and backend development, maintenance, server monitoring, and security.",
+      "“Developed a full-stack carpool matching platform leveraging Google Maps API for optimized route planning and real-time matching between drivers and passengers. Designed and implemented both frontend and backend systems, integrated secure authentication, and managed the entire development lifecycle including deployment, monitoring, and performance optimization.”",
     color: "linear-gradient(to right, #a855f7, #ec4899)",
     tags: ["TypeScript", "Python", "Django", "Google APIs", "OAuth"],
     year: "Oct 2024 - Present",
+    link: "https://drivermatch.store",
   },
   {
     title: "Auto Profanity Translator",
@@ -16,20 +26,12 @@ const projects = [
     year: "Jun 2023 - Jul 2023",
   },
   {
-    title: "Chrome Momentum Website",
-    description:
-      "Created a Chrome extension that displays local weather based on user location. Implemented a to-do list feature that saves data in local storage.",
-    color: "linear-gradient(to right, #facc15, #ef4444)",
-    tags: ["JavaScript", "HTML", "CSS"],
-    year: "Sep 2022",
-  },
-  {
     title: "Job Scraper",
     description:
       "Developed a website to automatically gather job listings from major platforms like Stack Overflow and Indeed. Used Beautiful Soup for web scraping and Flask to handle data transfer.",
     color: "linear-gradient(to right, #60a5fa, #22c55e)",
     tags: ["Python", "JavaScript", "Beautiful Soup", "Flask"],
-    year: "Nov 2020",
+    year: "Nov 2020 - Dec 2020",
   },
 ];
 
@@ -38,17 +40,24 @@ projects.forEach((project) => {
   const card = document.createElement("div");
   card.className = "project-card";
   card.innerHTML = `
-                <div class="project-header">
-                    <h3 class="project-title">${project.title}</h3>
-                    <span class="project-year">${project.year}</span>
-                </div>
-                <p class="project-description">${project.description}</p>
-                <div class="tags">
-                    ${project.tags
-                      .map((tag) => `<span class="tag">${tag}</span>`)
-                      .join("")}
-                </div>
-            `;
+    <div class="project-header">
+      <h3 class="project-title">${project.title}</h3>
+      <span class="project-year">${project.year}</span>
+    </div>
+    <p class="project-description">${project.description}</p>
+    <div class="tags">
+      ${project.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
+    </div>
+  `;
+
+  // 카드 전체를 클릭하면 새 창에서 열리도록
+  if (project.link) {
+    card.style.cursor = "pointer";
+    card.addEventListener("click", () => {
+      window.open(project.link, "_blank");
+    });
+  }
+
   projectsContainer.appendChild(card);
 });
 
